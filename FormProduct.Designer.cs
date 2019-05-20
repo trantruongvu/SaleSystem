@@ -38,6 +38,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProduct = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).BeginInit();
@@ -114,6 +115,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBoxProductCode);
             this.groupBox1.Controls.Add(this.button1);
@@ -150,6 +152,16 @@
             this.dataGridViewProduct.Size = new System.Drawing.Size(1820, 699);
             this.dataGridViewProduct.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1259, 44);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(150, 30);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Xóa hàng";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // FormProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,5 +192,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridViewProduct;
+        private System.Windows.Forms.Button button2;
     }
 }

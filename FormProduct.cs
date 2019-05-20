@@ -96,5 +96,14 @@ namespace HeThongBanHang
                 MessageBox.Show("Tạo không thành công!");
             }
         }
+
+        //
+        // Nút xóa sản phẩm
+        //
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            int currentRow = dataGridViewProduct.CurrentCell.RowIndex;
+            dataGridViewProduct.Rows.RemoveAt(currentRow);
+        }
     }
 }
