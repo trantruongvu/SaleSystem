@@ -8,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VuTran.DataAccess;
+using HeThongBanHang;
 
 
 namespace HeThongBanHang
 {
     public partial class FormReceipt : Form
     {
-        ProductDataAccess productDataAccess;
+        //ProductDataAccess productDataAccess;
+        public DataContext dataContext;
         long TotalMoney = 0;
 
         private long _ReceiptId;
@@ -26,7 +27,7 @@ namespace HeThongBanHang
         public FormReceipt()
         {
             InitializeComponent();
-            productDataAccess = new ProductDataAccess();
+            dataContext = new DataContext();
 
             InitSourceAutoComplete();
         }
@@ -38,8 +39,8 @@ namespace HeThongBanHang
             this.dataGridViewProduct.RowTemplate.Height = 35;
 
             var source = new AutoCompleteStringCollection();
-            List<Product> products = productDataAccess.dbContext.Products.ToList();
-          int s=  productDataAccess.dbContext.rp_print(13).ToList().Count;
+            List<Product> products = dataContext.dbContext.Products.ToList();
+            int s= dataContext.dbContext.rp_print(13).ToList().Count;
             foreach (Product product in products)
             {
                 source.AddRange(new string[]
@@ -59,7 +60,7 @@ namespace HeThongBanHang
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Product product = productDataAccess.dbContext.Products.FirstOrDefault(p => p.Code == textBoxProductCode.Text);
+                Product product = dataContext.dbContext.Products.FirstOrDefault(p => p.Code == textBoxProductCode.Text);
 
                 if (product == null)
                     return;
@@ -81,7 +82,7 @@ namespace HeThongBanHang
         //
         private void onEnteringCode(object sender, KeyPressEventArgs e)
         {
-            Product product = productDataAccess.dbContext.Products.FirstOrDefault(p => p.Code == textBoxProductCode.Text);
+            Product product = dataContext.dbContext.Products.FirstOrDefault(p => p.Code == textBoxProductCode.Text);
 
             if (product == null)
                 return;
@@ -190,7 +191,7 @@ namespace HeThongBanHang
 
             ReceiptId = receipt.Id;
 
-            if (productDataAccess.Insert(receipt))
+            if (dataContext.Insert(receipt))
             {
                 //MessageBox.Show("Tạo thành công!");
 
@@ -207,9 +208,12 @@ namespace HeThongBanHang
                     receiptDetail.Quantity = long.Parse(row.Cells[3].Value.ToString().Trim());
                     receiptDetail.TotalMoneyDetail = long.Parse(row.Cells[4].Value.ToString().Trim());
 
-                    Debug.WriteLine( productDataAccess.Insert(receiptDetail));
-                    Debug.WriteLine("receiptDetail : " + receiptDetail.Name);
+                    Debug.WriteLine( dataContext.Insert(receiptDetail) );
+                    Debug.WriteLine( "receiptDetail : " + receiptDetail.Name );
                 }
+
+                //MessageBox.Show("Tạo thành công!");
+
 
                 PrintForm form = new PrintForm(ReceiptId);
                 form.Location = this.Location;

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TestBanHang" Class="DataAccessDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=VUTRAN\SQLEXPRESS;Initial Catalog=TestBanHang;Integrated Security=True" SettingsObjectName="HeThongBanHang.Properties.Settings" SettingsPropertyName="TestBanHangConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NChar(1000)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NChar(1000)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Receipt" Member="Receipts">
+    <Type Name="Receipt">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SellerName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SellerAddress" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SellerPhone" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BuyerName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BuyerAddress" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BuyerPhone" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="TotalMoneyReceipt" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReceiptDetail" Member="ReceiptDetails">
+    <Type Name="ReceiptDetail">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ReportId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalMoneyDetail" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.rp_print" Method="rp_print">
+    <Parameter Name="receipid" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="rp_printResult">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SellerName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SellerAddress" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="SellerPhone" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BuyerName" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BuyerAddress" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="BuyerPhone" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="TotalMoneyReceipt" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Id1" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ReportId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalMoneyDetail" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

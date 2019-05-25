@@ -14,13 +14,6 @@ namespace HeThongBanHang
     {
         public FormMenu()
         {
-            //PrintForm form = new PrintForm();
-            //form.Location = this.Location;
-            //form.StartPosition = FormStartPosition.Manual;
-            //form.FormClosing += delegate { this.Show(); };
-            //form.Show();
-            //this.Hide();
-
             InitializeComponent();
         }
 
@@ -37,10 +30,16 @@ namespace HeThongBanHang
             FormProduct form = new FormProduct();
             form.Location = this.Location;
             form.StartPosition = FormStartPosition.Manual;
-            form.FormClosing += delegate { this.Show(); };
+            form.OnClosing = ABC;
             form.Show();
             this.Hide();
         }
+
+        public void ABC()
+        {
+            this.Show();
+        }
+
 
         //
         // Qua trang hóa đơn

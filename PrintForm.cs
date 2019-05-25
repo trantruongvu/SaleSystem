@@ -17,13 +17,17 @@ namespace HeThongBanHang
 
     public partial class PrintForm : Form
     {
-        ProductDataAccess dataAccess;
+        DataContext dataContext;
         long id;
 
         public PrintForm(long id)
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
             this.id = id;
-            dataAccess = new ProductDataAccess();
+            dataContext = new DataContext();
             InitializeComponent();
         }
 
@@ -32,11 +36,12 @@ namespace HeThongBanHang
             DateTime dateTime = DateTime.Now;
             string stringtime = "Ngày " + dateTime.Day + " tháng " + dateTime.Month + " năm " + dateTime.Year;
 
-            ReportDataSource data = new ReportDataSource("DataSet1", dataAccess.dbContext.rp_print(id).ToList());
+            //ReportDataSource data = new ReportDataSource("DataSet1", dataAccess.dbContext.rp_print(636941605679517584).ToList());
+            ReportDataSource data = new ReportDataSource("DataSet1", dataContext.dbContext.rp_print(id).ToList());
             ReportParameter[] param = new ReportParameter[]
             {
+                //new ReportParameter("receipid", "636941605679517584"),
                 new ReportParameter("receipid", id.ToString()),
-                //new ReportParameter("receipid", id.ToString()),
                 new ReportParameter("datetime", stringtime)
             };
             this.reportViewer1.LocalReport.DataSources.Clear();
